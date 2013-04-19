@@ -1,7 +1,7 @@
 voicerecog4pi
 =============
 
-Use Android's voice recognition and TextToSpeach to turn a LED on or off on Raspberry Pi using Eclipse Paho
+Use Android's voice recognition and TextToSpeach to turn a LED on or off on Raspberry Pi using Eclipse Paho Java Client library and a MQTT broker
 
 I am new to programming and even newer to automation. I thought it was a good idea to create a project like this one to
 get started. This project allows the user to turn on an LED on a Raspberry Pi using an Android device. It is a simple
