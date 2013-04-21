@@ -120,12 +120,12 @@ public class Main extends Activity implements OnClickListener {
 				words = words + phrase + " ";
 			}
 			Toast.makeText(this, words, Toast.LENGTH_SHORT).show();
-			if (words.equalsIgnoreCase("turn light on ")) {
+			if (words.equalsIgnoreCase("on ")) {
 				Intent intent = new Intent(this, MQTTService.class);
 				intent.putExtra("STATE", "ON");
 				bindService(intent, connection, IntentService.BIND_AUTO_CREATE);
 
-			} else if (words.equalsIgnoreCase("turn light off ")) {
+			} else if (words.equalsIgnoreCase("off ")) {
 				Intent intent = new Intent(this, MQTTService.class);
 				intent.putExtra("STATE", "OFF");
 				bindService(intent, connection, IntentService.BIND_AUTO_CREATE);
@@ -148,12 +148,12 @@ public class Main extends Activity implements OnClickListener {
 				public void onInit(int status) {
 					// TODO Auto-generated method stub
 					if (status == TextToSpeech.SUCCESS) {
-						if (words.equalsIgnoreCase("turn light on ")) {
+						if (words.equalsIgnoreCase("on ")) {
 							HashMap<String, String> parameters = null;
 							tts.speak("Turning Light on",
 									TextToSpeech.QUEUE_ADD, parameters);
 							unbindService(connection);
-						} else if (words.equalsIgnoreCase("turn light off ")) {
+						} else if (words.equalsIgnoreCase("off ")) {
 							HashMap<String, String> parameters = null;
 							tts.speak("Turning Light off",
 									TextToSpeech.QUEUE_ADD, parameters);

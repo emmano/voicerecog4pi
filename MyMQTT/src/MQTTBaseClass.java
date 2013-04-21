@@ -32,8 +32,8 @@ public class MQTTBaseClass {
 		// TODO Auto-generated method stub
 		try {
 			gpio = GpioFactory.getInstance();
-			MqttClient client = new MqttClient("tcp://type.the.broker.IP:1883",
-					"RaspberryPi1", new MemoryPersistence());
+			MqttClient client = new MqttClient("tcp://m2m.eclipse.org:1883",
+					"eorasppi", new MemoryPersistence());
 			MqttConnectOptions conOpts = new MqttConnectOptions();
 			conOpts.setKeepAliveInterval(30);
 			conOpts.setWill(client.getTopic("Error"),
@@ -55,7 +55,7 @@ public class MQTTBaseClass {
 							  @Override
 							  public void run() {
 							     // your UI code
-									pin.toggle();
+									pin.high();
 							  }
 							});	
 				
@@ -94,9 +94,9 @@ public class MQTTBaseClass {
 			pin = gpio.provisionDigitalOutputPin(
 					RaspiPin.GPIO_01, "MyLED");
 		
-			MqttTopic topic = client.getTopic("/House/Kitchen/LED");
+			MqttTopic topic = client.getTopic("com.jstnow.mqtt.topic/Home/Kitchen/LED");
 			
-		client.subscribe("/House/Kitchen/Bulb");
+		client.subscribe("com.jstnow.mqtt.topic/Home/Kitchen/LED");
 			
 			topic.publish(msg);
 
