@@ -66,7 +66,7 @@ public class MQTTService extends IntentService {
 // topics to which you are subscribed, they will receive your messages)
 			
 			
-			client = new MqttClient("tcp://m2m.eclipse.org:1883", "eoandroidphone",
+			client = new MqttClient("tcp://type.the.broker.IP:1883", "ANDROID1",
 					new MemoryPersistence());
 
 			MqttConnectOptions conOpts = new MqttConnectOptions();
@@ -122,11 +122,11 @@ public class MQTTService extends IntentService {
 				// client.subscribe("/Home/Kitchen/LED");
 				if (intent.getStringExtra("STATE").equals("ON")) {
 					MqttMessage msg = new MqttMessage("ON".getBytes());
-					client.getTopic("com.jstnow.mqtt.topic/Home/Kitchen/LED").publish(msg);
+					client.getTopic("/Home/Kitchen/LED").publish(msg);
 					messageDelivered = true;
 				} else {
 					MqttMessage msg = new MqttMessage("OFF".getBytes());
-					client.getTopic("com.jstnow.mqtt.topic/Home/Kitchen/LED").publish(msg);
+					client.getTopic("/Home/Kitchen/LED").publish(msg);
 					messageDelivered = true;
 				}
 
